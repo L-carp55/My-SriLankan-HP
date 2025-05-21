@@ -3,391 +3,355 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>බ්ලූවේව් (BlueWave) සමාගම | වෙබ් නිර්මාණය · නිර්මාණකරණය · සංවර්ධනය</title>
+  <title>NVIDIA | නවීන තාක්ෂණය සහ නවෝත්පාදන</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
-      --main-bg: #fffbe6;
-      --card-bg: #fff;
-      --accent: #ff9800;
-      --accent-light: #ffd54f;
-      --accent-green: #388e3c;
-      --accent-red: #e65100;
-      --text: #3e2723;
-      --subtext: #6d4c41;
-      --shadow: 0 8px 32px rgba(255, 152, 0, 0.10);
+      --nvidia-green: #76B900;
+      --nvidia-dark: #1a1a1a;
+      --nvidia-black: #000;
+      --nvidia-gray: #222;
+      --nvidia-light: #f5f5f5;
+      --nvidia-subtext: #b0b0b0;
     }
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #fffbe6 0%, #ffe082 100%);
-      color: var(--text);
-      font-family: 'Noto Sans Sinhala', sans-serif;
+      background: var(--nvidia-dark);
+      color: var(--nvidia-light);
+      font-family: 'Segoe UI', 'Noto Sans Sinhala', Arial, sans-serif;
       min-height: 100vh;
     }
     header {
-      background: #fff8e1;
-      box-shadow: 0 2px 8px #ff980011;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
+      background: var(--nvidia-black);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      height: 70px;
+      padding: 0 48px;
+      height: 72px;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .logo {
-      font-size: 1.7rem;
-      font-family: 'Noto Sans Sinhala', sans-serif;
-      font-weight: 700;
-      color: var(--accent-green);
-      letter-spacing: 0.08em;
+    .nvidia-logo {
       display: flex;
       align-items: center;
-      gap: 0.5em;
+      gap: 12px;
     }
-    .logo i {
-      color: var(--accent);
+    .nvidia-logo svg {
+      height: 36px;
+      width: 36px;
+      display: block;
+    }
+    .nvidia-logo-text {
+      color: var(--nvidia-green);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
     nav ul {
       display: flex;
-      gap: 2em;
+      gap: 2.5em;
       list-style: none;
       margin: 0;
       padding: 0;
     }
     nav ul li a {
-      color: var(--text);
+      color: var(--nvidia-light);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1.05em;
-      transition: color 0.2s;
-      padding: 6px 0;
+      font-size: 1.08em;
+      padding: 8px 0;
       border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-bottom 0.2s;
     }
     nav ul li a:hover, nav ul li a.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
+      color: var(--nvidia-green);
+      border-bottom: 2px solid var(--nvidia-green);
     }
-    .main-visual {
-      background: linear-gradient(120deg, #fffbe6 60%, #ffe082 100%);
-      padding: 80px 0 60px 0;
+    .hero {
+      background: url('https://images.nvidia.com/aem-dam/Solutions/geforce/ada/homepage/hero-bg-2560x1440.jpg') center/cover no-repeat;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      box-shadow: 0 4px 24px #ff980011;
+      position: relative;
     }
-    .main-visual .catch {
-      font-size: 2.3rem;
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 24px 100px 24px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
       font-weight: 700;
-      color: var(--accent-green);
-      margin-bottom: 0.5em;
+      color: var(--nvidia-green);
+      margin-bottom: 0.7em;
       letter-spacing: 0.04em;
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
-    .main-visual .desc {
-      font-size: 1.15rem;
-      color: var(--subtext);
+    .hero-desc {
+      font-size: 1.3rem;
+      color: var(--nvidia-light);
       margin-bottom: 2em;
       letter-spacing: 0.02em;
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
-    .main-visual .cta-btn {
+    .hero-btn {
       display: inline-block;
-      background: linear-gradient(90deg, var(--accent) 60%, var(--accent-light) 100%);
+      background: var(--nvidia-green);
       color: #fff;
       font-weight: bold;
-      font-size: 1.1em;
-      padding: 16px 48px;
-      border-radius: 999px;
+      font-size: 1.15em;
+      padding: 16px 52px;
+      border-radius: 0;
       text-decoration: none;
-      box-shadow: 0 2px 12px #ff980022;
+      box-shadow: none;
       transition: background 0.2s, color 0.2s, transform 0.2s;
       border: none;
       outline: none;
       margin-top: 1em;
+      letter-spacing: 0.04em;
     }
-    .main-visual .cta-btn:hover {
+    .hero-btn:hover {
       background: #fff;
-      color: var(--accent);
-      border: 2px solid var(--accent);
+      color: var(--nvidia-green);
+      border: 2px solid var(--nvidia-green);
       transform: translateY(-3px) scale(1.05);
     }
     .section {
-      max-width: 1000px;
-      margin: 48px auto;
-      background: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: 48px 40px 40px 40px;
+      max-width: 1200px;
+      margin: 56px auto;
+      background: var(--nvidia-gray);
+      border-radius: 0;
+      box-shadow: none;
+      padding: 56px 48px 44px 48px;
       position: relative;
+      border: none;
     }
     .section-title {
-      font-size: 1.4rem;
-      color: var(--accent-green);
+      font-size: 1.7rem;
+      color: var(--nvidia-green);
       font-weight: bold;
-      margin-bottom: 1.2em;
+      margin-bottom: 1.4em;
       letter-spacing: 0.04em;
       text-align: center;
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
-    .services {
+    .cards {
       display: flex;
       flex-wrap: wrap;
-      gap: 2em;
+      gap: 2.2em;
       justify-content: center;
       margin-bottom: 1em;
     }
-    .service-card {
-      background: #fffde7;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #ff980011;
-      padding: 2em 1.5em 1.5em 1.5em;
-      width: 270px;
-      text-align: center;
-      transition: box-shadow 0.2s, transform 0.2s;
-      border: 2px solid #ffe082;
-    }
-    .service-card:hover {
-      box-shadow: 0 8px 32px #ff980022;
-      transform: translateY(-5px) scale(1.03);
-      border-color: var(--accent);
-    }
-    .service-card i {
-      font-size: 2.2em;
-      color: var(--accent);
-      margin-bottom: 0.5em;
-    }
-    .service-title {
-      font-size: 1.1em;
-      font-weight: bold;
-      margin-bottom: 0.5em;
-      color: var(--accent-green);
-    }
-    .service-desc {
-      color: var(--subtext);
-      font-size: 0.98em;
-      line-height: 1.7;
-    }
-    .company-info-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0 auto;
-      max-width: 600px;
-      background: #fffde7;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px #ff980011;
-    }
-    .company-info-table th, .company-info-table td {
-      padding: 1em 1.2em;
+    .card {
+      background: #181818;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 2.2em 1.7em 1.7em 1.7em;
+      width: 320px;
       text-align: left;
-      font-size: 1em;
-    }
-    .company-info-table th {
-      background: #ffe082;
-      color: var(--accent-green);
-      width: 160px;
-      font-weight: 600;
-    }
-    .company-info-table td {
-      background: #fff;
-      color: var(--text);
-    }
-    .contact-form {
-      max-width: 500px;
-      margin: 0 auto;
+      transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+      border: 1.5px solid #222;
       display: flex;
       flex-direction: column;
-      gap: 1.2em;
+      gap: 1em;
     }
-    .contact-form label {
-      font-weight: 500;
-      color: var(--accent-green);
-      margin-bottom: 0.3em;
-      display: block;
+    .card:hover {
+      box-shadow: 0 8px 32px #76B90022;
+      transform: translateY(-5px) scale(1.03);
+      border-color: var(--nvidia-green);
     }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 0.8em;
-      border-radius: 8px;
-      border: 1px solid #ffe082;
-      font-size: 1em;
-      font-family: inherit;
-      background: #fffde7;
-      resize: vertical;
-      transition: border 0.2s;
+    .card-icon {
+      font-size: 2.3em;
+      color: var(--nvidia-green);
+      margin-bottom: 0.5em;
     }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border: 1.5px solid var(--accent);
-      outline: none;
-    }
-    .contact-form button {
-      align-self: flex-end;
-      background: linear-gradient(90deg, var(--accent) 60%, var(--accent-light) 100%);
-      color: #fff;
+    .card-title {
+      font-size: 1.13em;
       font-weight: bold;
-      font-size: 1.1em;
-      padding: 12px 36px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
-      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      color: var(--nvidia-green);
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
-    .contact-form button:hover {
-      background: #fff;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-      transform: translateY(-3px) scale(1.05);
+    .card-desc {
+      color: var(--nvidia-subtext);
+      font-size: 1em;
+      line-height: 1.7;
+      font-family: 'Noto Sans Sinhala', 'Segoe UI', Arial, sans-serif;
     }
     footer {
-      background: var(--accent-green);
-      color: #fffde7;
+      background: var(--nvidia-black);
+      color: var(--nvidia-light);
       text-align: center;
       padding: 32px 0 16px 0;
       margin-top: 48px;
       font-size: 1em;
       letter-spacing: 0.04em;
+      border-top: 1px solid #222;
     }
-    @media (max-width: 1100px) {
-      .nav-container, .section {
-        padding-left: 5vw;
-        padding-right: 5vw;
-      }
+    .footer-links {
+      margin-bottom: 1em;
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--nvidia-green);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
     }
     @media (max-width: 900px) {
-      .services {
+      .cards {
         flex-direction: column;
         align-items: center;
       }
-      .service-card {
-        width: 90%;
-        max-width: 400px;
+      .card {
+        width: 95%;
+        max-width: 420px;
+      }
+      .section {
+        padding: 24px 2vw 20px 2vw;
       }
     }
     @media (max-width: 700px) {
-      .nav-container {
+      header {
         flex-direction: column;
         height: auto;
         padding: 0 2vw;
         gap: 0.5em;
       }
-      .main-visual {
-        padding: 48px 0 32px 0;
+      .hero-content {
+        padding: 48px 2vw 32px 2vw;
       }
-      .main-visual .catch {
-        font-size: 1.2rem;
-      }
-      .section {
-        padding: 24px 2vw 20px 2vw;
+      .hero-title {
+        font-size: 1.5rem;
       }
       .section-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
   <header>
-    <div class="nav-container">
-      <div class="logo"><i class="fa-solid fa-umbrella-beach"></i>බ්ලූවේව්</div>
-      <nav>
-        <ul>
-          <li><a href="#service" class="active">සේවා</a></li>
-          <li><a href="#company">සමාගමේ තොරතුරු</a></li>
-          <li><a href="#contact">අප අමතන්න</a></li>
-        </ul>
-      </nav>
+    <div class="nvidia-logo">
+      <!-- NVIDIA SVGロゴ -->
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="80" height="80" rx="16" fill="#76B900"/>
+        <path d="M40 20C29 20 20 29 20 40C20 51 29 60 40 60C51 60 60 51 60 40C60 29 51 20 40 20ZM40 54C32.268 54 26 47.732 26 40C26 32.268 32.268 26 40 26C47.732 26 54 32.268 54 40C54 47.732 47.732 54 40 54Z" fill="#fff"/>
+      </svg>
+      <span class="nvidia-logo-text">NVIDIA</span>
     </div>
+    <nav>
+      <ul>
+        <li><a href="#products" class="active">නිෂ්පාදන</a></li>
+        <li><a href="#solutions">විසඳුම්</a></li>
+        <li><a href="#about">අපි ගැන</a></li>
+        <li><a href="#contact">සම්බන්ධ වන්න</a></li>
+      </ul>
+    </nav>
   </header>
-  <section class="main-visual">
-    <div class="catch">අපගේ වෙබ් විසඳුම් සමඟ<br>ඔබේ ව්‍යාපාරය ඉදිරියට ගෙන යන්න</div>
-    <div class="desc">
-      බ්ලූවේව් (BlueWave) සමාගම වෙබ් නිර්මාණය, නිර්මාණකරණය සහ පද්ධති සංවර්ධනය හරහා<br>
-      ඔබගේ ව්‍යාපාරයට නව අගයක් එක් කරයි.
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title">ඔබේ අනාගතය NVIDIA සමඟ</div>
+      <div class="hero-desc">AI, ගේම්, වෘත්තීය, සහ තවත් බොහෝ ක්ෂේත්‍ර සඳහා නවෝත්පාදන සහ නවීන තාක්ෂණය.</div>
+      <a href="#products" class="hero-btn">නිෂ්පාදන බලන්න</a>
     </div>
-    <a href="#contact" class="cta-btn"><i class="fa-solid fa-paper-plane"></i>අප අමතන්න</a>
   </section>
-  <section class="section" id="service">
-    <div class="section-title"><i class="fa-solid fa-briefcase"></i> සේවා</div>
-    <div class="services">
-      <div class="service-card">
-        <i class="fa-solid fa-desktop"></i>
-        <div class="service-title">වෙබ් අඩවි නිර්මාණය</div>
-        <div class="service-desc">
-          සමාගම් වෙබ් අඩවි, රැකියා අයදුම් අඩවි, ලෑන්ඩිං පිටු සහ තවත් බොහෝ සේවා.<br>
-          ඔබගේ අරමුණු සඳහා උසස් තත්ත්වයේ වෙබ් අඩවි නිර්මාණය කරයි.
-        </div>
+  <section class="section" id="products">
+    <div class="section-title"><i class="fa-solid fa-microchip"></i> ප්‍රමුඛ නිෂ්පාදන</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+        <div class="card-title">GeForce ග්‍රැෆික් කාඩ්</div>
+        <div class="card-desc">ඉහළ කාර්යක්ෂමතාව සහ නවීන ගේම් අත්දැකීම් සඳහා.</div>
       </div>
-      <div class="service-card">
-        <i class="fa-solid fa-paint-brush"></i>
-        <div class="service-title">නිර්මාණකරණ සේවා</div>
-        <div class="service-desc">
-          ලාංඡන, බැනර්, UI/UX නිර්මාණය සහ තවත් බොහෝ සේවා.<br>
-          ඔබගේ වෙළඳ නාමයට අලුත් වටිනාකමක් එක් කරයි.
-        </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="card-title">AI සහ Deep Learning</div>
+        <div class="card-desc">AI පර්යේෂණ, සංවර්ධනය සහ යෙදුම් සඳහා GPU විසඳුම්.</div>
       </div>
-      <div class="service-card">
-        <i class="fa-solid fa-code"></i>
-        <div class="service-title">පද්ධති සංවර්ධනය</div>
-        <div class="service-desc">
-          ව්‍යාපාර කාර්යක්ෂමතාවය සහ ඩිජිටල් පරිවර්තනය සඳහා<br>
-          වෙබ් යෙදුම් සහ පද්ධති සංවර්ධනය.
-        </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+        <div class="card-title">NVIDIA Data Center</div>
+        <div class="card-desc">වෘත්තීය පරිගණක, Cloud සහ HPC සඳහා.</div>
       </div>
     </div>
   </section>
-  <section class="section" id="company">
-    <div class="section-title"><i class="fa-solid fa-building"></i> සමාගමේ තොරතුරු</div>
-    <table class="company-info-table">
-      <tr>
-        <th>සමාගමේ නම</th>
-        <td>බ්ලූවේව් (BlueWave) සමාගම</td>
-      </tr>
-      <tr>
-        <th>ප්‍රධානී</th>
-        <td>යමදා තාරෝ (Yamada Taro)</td>
-      </tr>
-      <tr>
-        <th>ලිපිනය</th>
-        <td>1-2-3, ශිබුයා, ටෝකියෝ, ජපානය</td>
-      </tr>
-      <tr>
-        <th>ස්ථාපිත වීම</th>
-        <td>2020 අප්‍රේල්</td>
-      </tr>
-      <tr>
-        <th>ව්‍යාපාර අන්තර්ගතය</th>
-        <td>වෙබ් නිර්මාණය, නිර්මාණකරණය, පද්ධති සංවර්ධනය</td>
-      </tr>
-      <tr>
-        <th>සම්බන්ධතා</th>
-        <td>info@bluewave.co.jp</td>
-      </tr>
-    </table>
+  <section class="section" id="solutions">
+    <div class="section-title"><i class="fa-solid fa-lightbulb"></i> විසඳුම්</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+        <div class="card-title">Gaming</div>
+        <div class="card-desc">GeForce සහ RTX තාක්ෂණය සමඟ අතිවිශිෂ්ට ක්‍රීඩා අත්දැකීම්.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+        <div class="card-title">AI සහ Robotics</div>
+        <div class="card-desc">AI, Robotics, සහ Deep Learning සඳහා නවෝත්පාදන.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <div class="card-title">Data Center</div>
+        <div class="card-desc">Cloud, HPC, සහ වෘත්තීය පරිගණක විසඳුම්.</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="about">
+    <div class="section-title"><i class="fa-solid fa-building"></i> අපි ගැන</div>
+    <div style="max-width:700px;margin:0 auto;color:var(--nvidia-subtext);font-size:1.1em;line-height:1.8;text-align:center;">
+      NVIDIA යනු ලෝකයේ ප්‍රමුඛතම ග්‍රැෆික්, AI, සහ පරිගණක තාක්ෂණ සමාගමකි. 1993 දී ආරම්භ වූ NVIDIA, ගේම්, වෘත්තීය, AI, සහ Data Center ක්ෂේත්‍රවල නවෝත්පාදන හරහා ලෝකය වෙනස් කරයි.
+    </div>
   </section>
   <section class="section" id="contact">
-    <div class="section-title"><i class="fa-solid fa-envelope"></i> අප අමතන්න</div>
-    <form class="contact-form">
+    <div class="section-title"><i class="fa-solid fa-envelope"></i> සම්බන්ධ වන්න</div>
+    <form style="max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:1.2em;">
       <div>
-        <label for="name">නම</label>
-        <input type="text" id="name" name="name" required placeholder="උදා: යමදා තාරෝ">
+        <label for="name" style="color:var(--nvidia-green);font-weight:500;">නම</label>
+        <input type="text" id="name" name="name" required placeholder="උදා: ජයවර්ධන" style="width:100%;padding:0.8em;border-radius:0;border:1.5px solid #333;font-size:1em;background:#181818;color:var(--nvidia-light);">
       </div>
       <div>
-        <label for="email">ඊමේල් ලිපිනය</label>
-        <input type="email" id="email" name="email" required placeholder="උදා: info@example.com">
+        <label for="email" style="color:var(--nvidia-green);font-weight:500;">ඊමේල් ලිපිනය</label>
+        <input type="email" id="email" name="email" required placeholder="උදා: info@example.com" style="width:100%;padding:0.8em;border-radius:0;border:1.5px solid #333;font-size:1em;background:#181818;color:var(--nvidia-light);">
       </div>
       <div>
-        <label for="message">පණිවිඩය</label>
-        <textarea id="message" name="message" rows="5" required placeholder="ඔබගේ ප්‍රශ්නය හෝ ඉල්ලීම මෙහි ලියන්න"></textarea>
+        <label for="message" style="color:var(--nvidia-green);font-weight:500;">පණිවිඩය</label>
+        <textarea id="message" name="message" rows="5" required placeholder="ඔබගේ ප්‍රශ්නය හෝ ඉල්ලීම මෙහි ලියන්න" style="width:100%;padding:0.8em;border-radius:0;border:1.5px solid #333;font-size:1em;background:#181818;color:var(--nvidia-light);"></textarea>
       </div>
-      <button type="submit"><i class="fa-solid fa-paper-plane"></i> යවන්න</button>
+      <button type="submit" style="align-self:flex-end;background:var(--nvidia-green);color:#fff;font-weight:bold;font-size:1.1em;padding:12px 36px;border-radius:0;border:none;cursor:pointer;transition:background 0.2s,color 0.2s,transform 0.2s;margin-top:0.5em;letter-spacing:0.04em;">යවන්න</button>
     </form>
   </section>
   <footer>
-    <div>බ්ලූවේව් (BlueWave) සමාගම &copy; 2024 සියලු හිමිකම් ඇවිරිණි.</div>
+    <div class="footer-links">
+      <a href="#products">නිෂ්පාදන</a>
+      <a href="#solutions">විසඳුම්</a>
+      <a href="#about">අපි ගැන</a>
+      <a href="#contact">සම්බන්ධ වන්න</a>
+    </div>
+    <div>NVIDIA &copy; 2024 සියලු හිමිකම් ඇවිරිණි.</div>
   </footer>
 </body>
 </html>
